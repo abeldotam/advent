@@ -6,6 +6,7 @@ const input = readFileSync(resolve(__dirname, './input.txt'), 'utf-8').split('\n
 
 
 /* ------ First exercice ------ */
+// Instruction: https://adventofcode.com/2021/day/1#part1
 function calculateFirstPosition() {
   const position = {
     distance: 0,
@@ -36,6 +37,8 @@ console.log(`Horizontal position: ${firstPosition.distance * firstPosition.depth
 
 
 /* ------ Second exercice ------ */
+// Instruction: https://adventofcode.com/2021/day/2#part2
+
 function calculateSecondPosition() {
   const position = {
     distance: 0,
