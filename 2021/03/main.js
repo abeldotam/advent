@@ -8,11 +8,9 @@ const input = readFileSync(resolve(__dirname, './input.txt'), 'utf-8').split('\n
 
 function getGammaRate() {
   var counters = new Array(input[0].length).fill(0)
-  // Increment or decrement counters, based on positivity of the bit
   input.forEach(binary => {
     Array.from(binary).map((bit, index) => bit == 1 ? counters[index] += 1 : counters[index] -= 1)
   })
-  // 
   return counters.map(count => count < 0 ? 0 : 1).join('')
 }
 
