@@ -23,3 +23,27 @@ console.log(`Power consuption is ${parseInt(gammaRate, 2) * parseInt(espilonRate
 
 /* ------ Second exercice ------ */
 // Instruction: https://adventofcode.com/2021/day/3#part2
+
+function getRating(ratingType) {
+  let datas = [...input];
+
+  for (let position = 0; position < input[0].length; position++) {
+    if (datas.length > 1) {
+      const binariesFromPosition = datas.map(bin => bin[position])
+      const filterOnBin = (binary) => binariesFromPosition.filter(bin => bin === binary.toString()).length
+      const [negBinNumber, posBinNumber] = [filterOnBin(0), filterOnBin(1)]
+
+      const bitToFilter = ratingType ?
+        (negBinNumber <= posBinNumber ? 0 : 1) :
+        (posBinNumber >= negBinNumber ? 1 : 0)
+
+      datas = datas.filter(entry => entry[position] === bitToFilter.toString())
+    }
+  }
+  return datas
+}
+
+const oxygenRating = getRating(0)
+const scuberRating = getRating(1)
+
+console.log(`Life support rating is ${parseInt(oxygenRating, 2) * parseInt(scuberRating, 2)}`)
